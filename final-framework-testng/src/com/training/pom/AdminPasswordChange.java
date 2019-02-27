@@ -14,6 +14,7 @@ private WebDriver driver;
 		PageFactory.initElements(driver, this);
 	}
 	
+	//Login page
 	@FindBy(id="login")
 	private WebElement userName; 
 	
@@ -23,9 +24,11 @@ private WebDriver driver;
 	@FindBy(id="formLogin_submitAuth")
 	private WebElement loginBtn; 
 	
+	//Navigating to home page
 	@FindBy(xpath="//*[@id=\"menuone\"]/ul[1]/li[1]/a")
 	private WebElement homePage;
 	
+	//Clicking on Edit profile link for password change
 	@FindBy(xpath="//*[@id=\"profileCollapse\"]/div/ul/li[4]/a")
 	private WebElement editProfile;
 	
@@ -38,6 +41,7 @@ private WebDriver driver;
 	@FindBy(id="profile_password2")
 	private WebElement password2;
 	
+	// Click on Save
 	@FindBy(id="profile_apply_change")
 	private WebElement save;
 	

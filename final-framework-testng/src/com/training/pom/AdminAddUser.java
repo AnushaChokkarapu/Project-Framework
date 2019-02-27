@@ -14,6 +14,7 @@ public class AdminAddUser {
 			PageFactory.initElements(driver, this);
 		}
 		
+		//Login page
 		@FindBy(id="login")
 		private WebElement userName; 
 		
@@ -23,12 +24,15 @@ public class AdminAddUser {
 		@FindBy(id="formLogin_submitAuth")
 		private WebElement loginBtn; 
 		
+		//Navigating to Admin page
 		@FindBy(xpath="//*[@id=\"menuone\"]/ul[1]/li[7]/a")
 		private WebElement adminLink;
 		
+		//Click on Add User Link
 		@FindBy(xpath="//*[@id=\"tabs-1\"]/div/div[2]/div[2]/ul/li[2]/a")
 		private WebElement addUserLink;
 		
+		//Enter all the relevant details
 		@FindBy(name="firstname")
 		private WebElement firstName;
 		
@@ -56,6 +60,7 @@ public class AdminAddUser {
 		@FindBy(xpath="//*[@id=\"user_add\"]/fieldset/div[11]/div[1]/div/div/ul/li[1]/a/span[1]")
 		private WebElement trainer;
 		
+		// Click on Submit 
 		@FindBy(name="submit")
 		private WebElement submit;
 		

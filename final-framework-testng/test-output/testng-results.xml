@@ -2,28 +2,28 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="20547" started-at="2019-02-18T06:18:24Z" finished-at="2019-02-18T06:18:44Z">
+  <suite name="Default suite" duration-ms="35180" started-at="2019-02-26T09:34:46Z" finished-at="2019-02-26T09:35:21Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="20547" started-at="2019-02-18T06:18:24Z" finished-at="2019-02-18T06:18:44Z">
-      <class name="com.training.sanity.tests.AdminUserEditTest">
-        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.sanity.tests.AdminUserEditTest@3bfdc050]" name="setUpBeforeClass" is-config="true" duration-ms="13" started-at="2019-02-18T06:18:24Z" finished-at="2019-02-18T06:18:24Z">
+    <test name="Default test" duration-ms="35180" started-at="2019-02-26T09:34:46Z" finished-at="2019-02-26T09:35:21Z">
+      <class name="com.training.sanity.tests.AdminAddClassTest">
+        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.sanity.tests.AdminAddClassTest@3bfdc050]" name="setUpBeforeClass" is-config="true" duration-ms="28" started-at="2019-02-26T09:34:46Z" finished-at="2019-02-26T09:34:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpBeforeClass -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.sanity.tests.AdminUserEditTest@3bfdc050]" name="setUp" is-config="true" duration-ms="11645" started-at="2019-02-18T06:18:24Z" finished-at="2019-02-18T06:18:36Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.sanity.tests.AdminAddClassTest@3bfdc050]" name="setUp" is-config="true" duration-ms="15990" started-at="2019-02-26T09:34:46Z" finished-at="2019-02-26T09:35:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="validEditTest()[pri:0, instance:com.training.sanity.tests.AdminUserEditTest@3bfdc050]" name="validEditTest" duration-ms="7096" started-at="2019-02-18T06:18:36Z" finished-at="2019-02-18T06:18:43Z">
+        <test-method status="PASS" signature="validAddClassTest()[pri:0, instance:com.training.sanity.tests.AdminAddClassTest@3bfdc050]" name="validAddClassTest" duration-ms="17300" started-at="2019-02-26T09:35:02Z" finished-at="2019-02-26T09:35:19Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- validEditTest -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.sanity.tests.AdminUserEditTest@3bfdc050]" name="tearDown" is-config="true" duration-ms="1766" started-at="2019-02-18T06:18:43Z" finished-at="2019-02-18T06:18:44Z">
+        </test-method> <!-- validAddClassTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.sanity.tests.AdminAddClassTest@3bfdc050]" name="tearDown" is-config="true" duration-ms="1847" started-at="2019-02-26T09:35:19Z" finished-at="2019-02-26T09:35:21Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.training.sanity.tests.AdminUserEditTest -->
+      </class> <!-- com.training.sanity.tests.AdminAddClassTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

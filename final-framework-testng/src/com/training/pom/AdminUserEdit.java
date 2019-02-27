@@ -14,6 +14,7 @@ private WebDriver driver;
 		PageFactory.initElements(driver, this);
 	}
 	
+	//Login page
 	@FindBy(id="login")
 	private WebElement userName; 
 	
@@ -23,12 +24,15 @@ private WebDriver driver;
 	@FindBy(id="formLogin_submitAuth")
 	private WebElement loginBtn; 
 	
+	//Navigating to Admin page
 	@FindBy(xpath="//*[@id=\"menuone\"]/ul[1]/li[7]/a")
 	private WebElement adminLink;
 	
+	//Click on User list link
 	@FindBy(xpath="//*[@id=\"tabs-1\"]/div/div[2]/div[2]/ul/li[1]/a")
 	private WebElement userListLink;
 	
+	//Click on Edit user link
 	@FindBy(xpath="/html[1]/body[1]/div[1]/section[1]/div[1]/div[2]/div[1]/section[1]/div[1]/form[1]/table[1]/tbody[1]/tr[2]/td[11]/a[5]/img[1]")
 	private WebElement editUserLink;
 	

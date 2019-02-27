@@ -14,6 +14,7 @@ public class StudentLogout {
 			PageFactory.initElements(driver, this);
 		}
 		
+		// Login page
 		@FindBy(id="login")
 		private WebElement userName; 
 		
@@ -23,9 +24,11 @@ public class StudentLogout {
 		@FindBy(id="formLogin_submitAuth")
 		private WebElement loginBtn; 
 		
+		// User clicks on the drop down
 		@FindBy(xpath="//*[@id=\"menuone\"]/ul[2]/li[2]/a")
 		private WebElement drpDown;
 		
+		// Click on logout
 		@FindBy(xpath="//*[@id=\"logout_button\"]")
 		private WebElement logout;
 		

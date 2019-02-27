@@ -14,6 +14,7 @@ private WebDriver driver;
 		PageFactory.initElements(driver, this);
 	}
 	
+	// Login page
 	@FindBy(id="login")
 	private WebElement userName; 
 	
