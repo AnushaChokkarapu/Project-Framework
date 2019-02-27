@@ -50,12 +50,15 @@ public class StudentLogoutTest {
 				
 	@Test
 	public void validLogoutTest() {
+		// Login page
 		System.out.println(driver.getTitle());
 		studentLogout.sendUserName("vamshi");
 		studentLogout.sendPassword("123456");
 		studentLogout.clickLoginBtn(); 
 		studentLogout.clickDrpDown();
 		studentLogout.clickLogout();
+		
+		// Assertion
 		String Actual = driver.getTitle();
 		String Expected = "eLearning - eLearning";
 		assertEquals(Actual, Expected);

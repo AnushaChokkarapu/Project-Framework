@@ -41,6 +41,7 @@ public class PasswordChangeTest {
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
 		driver.get(baseUrl);
+		// Login page
 		adminPasswordChange.sendUserName("admin");
 		adminPasswordChange.sendPassword("admin@123");
 		adminPasswordChange.clickLoginBtn(); 
@@ -55,12 +56,14 @@ public class PasswordChangeTest {
 	@Test
 	public void validEditTest() {
 		adminPasswordChange.clickHomePage();
+		
+		// Edit profile page
 		adminPasswordChange.clickEditProfile();
 		adminPasswordChange.sendPassword0("admin@123");
 		adminPasswordChange.sendPassword1("admin@1234");
 		adminPasswordChange.sendPassword2("admin@1234");
 		adminPasswordChange.saveChanges();
-		
+		// Assertion
 		String Actual = driver.findElement(By.xpath("//*[@id=\"content-section\"]/div/div[2]/div/div[1]")).getText();
 		String Expected = "Your new profile has been saved";
 		assertEquals(Actual, Expected);

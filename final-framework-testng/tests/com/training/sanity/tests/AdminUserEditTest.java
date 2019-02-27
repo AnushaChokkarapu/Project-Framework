@@ -41,6 +41,8 @@ public class AdminUserEditTest {
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
 		driver.get(baseUrl);
+		
+		// Login page
 		adminUserEdit.sendUserName("admin");
 		adminUserEdit.sendPassword("admin@1234");
 		adminUserEdit.clickLoginBtn(); 
@@ -57,6 +59,8 @@ public class AdminUserEditTest {
 		adminUserEdit.clickAdminLink();
 		adminUserEdit.clickUserListLink();
 		adminUserEdit.clickEditUserLink();
+		
+		// Assertion
 		String Actual = driver.findElement(By.name("firstname")).getAttribute("value");
 		String Expected = "Hari";
 		assertEquals(Actual, Expected);

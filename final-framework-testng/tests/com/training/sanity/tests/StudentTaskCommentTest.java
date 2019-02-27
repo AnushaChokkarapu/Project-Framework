@@ -41,6 +41,7 @@ public class StudentTaskCommentTest {
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
 		driver.get(baseUrl);
+		// Login page
 		studentTaskComment.sendUserName("vamshi");
 		studentTaskComment.sendPassword("123456");
 		studentTaskComment.clickLoginBtn();
@@ -55,7 +56,7 @@ public class StudentTaskCommentTest {
 	@Test
 	public void validStudentTaskTest() throws Exception {
 		System.out.println(driver.getTitle());
-		 
+		// Adding a comment for the assigned task 
 		studentTaskComment.clickCourseLink();
 		studentTaskComment.clickProjectLink();
 		studentTaskComment.clickMyTaskLink();
@@ -63,6 +64,7 @@ public class StudentTaskCommentTest {
 		studentTaskComment.clickTaskNameLink();
 		studentTaskComment.sendTitle("Hello5");
 		studentTaskComment.clickSave();
+		// Assertion
 		String Actual = driver.findElement(By.xpath("//*[@id=\"content-section\"]/div/div[2]/div/div[2]")).getText();
 		String Expected = "You comment has been added";
 		assertEquals(Actual, Expected);

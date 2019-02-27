@@ -41,6 +41,7 @@ public class AdminCreateSessionTest {
 		// open the browser 
 		driver.get(baseUrl);
 		
+		//login page
 		adminCreateSession.sendUserName("admin");
 		adminCreateSession.sendPassword("admin@1234");
 		adminCreateSession.clickLoginBtn();
@@ -54,6 +55,8 @@ public class AdminCreateSessionTest {
 	@Test
 	public void validCreateSessionTest() {
 		adminCreateSession.clickAdminLink();
+		
+		// Creating a new session
 		adminCreateSession.clickAddSessionLink();
 		adminCreateSession.sendSessionName("Fifth");
 		adminCreateSession.coachName();
@@ -64,6 +67,8 @@ public class AdminCreateSessionTest {
 		adminCreateSession.sendUserAdd("vamshi");
 		adminCreateSession.clickSelectUser();
 		adminCreateSession.clickFinishSession();
+		
+		// Assertion
 		String Actual = driver.findElement(By.xpath("//*[@id=\"session-user-list\"]/tbody/tr[2]/td[1]/a")).getText();
 	    String Expected = "Vamshi Krishna (vamshi)";
 		Assert.assertTrue(Actual.contains(Expected));

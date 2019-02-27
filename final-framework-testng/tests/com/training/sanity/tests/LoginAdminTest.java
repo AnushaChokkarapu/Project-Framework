@@ -49,10 +49,12 @@ public class LoginAdminTest {
 	}
 	@Test
 	public void validLoginTest() {
+		// Login page
 		System.out.println("Login Page Title is:"+driver.getTitle());
 		loginAdmin.sendUserName("admin");
 		loginAdmin.sendPassword("admin@1234");
 		loginAdmin.clickLoginBtn(); 
+		// Assertion
 		String Actual = driver.getTitle();
 		String Expected = "eLearning - eLearning";
 		assertEquals(Actual, Expected);

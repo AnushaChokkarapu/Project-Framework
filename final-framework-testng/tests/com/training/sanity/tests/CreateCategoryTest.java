@@ -40,7 +40,7 @@ public class CreateCategoryTest {
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
 		driver.get(baseUrl);
-		
+		// login page
 		createCategory.sendUserName("admin");
 		createCategory.sendPassword("admin@1234");
 		createCategory.clickLoginBtn();
@@ -55,12 +55,16 @@ public class CreateCategoryTest {
 	public void validAddUserTest() {
 		createCategory.clickAdminLink();
 		createCategory.clickCoursesCategoryLink();
+		
+		// Creating a new category
 		createCategory.clickAddCategoryLink();
 		createCategory.sendCategoryCode("11");
 		createCategory.sendCategoryName("Category3");
 		createCategory.clickYesRadio();
 		createCategory.clickCategorySubmit();
 		createCategory.clickAdminLink();
+		
+		// creating a new course
 		createCategory.clickCreateCourseLink();
 		createCategory.sendCourseTitle("Selenium_121");
 		createCategory.sendCode("ABD");
@@ -69,6 +73,7 @@ public class CreateCategoryTest {
 		createCategory.clickLanguageDrpDown();
 		createCategory.clickSubmitLink();
 		
+		//Assertion
 		String Actual = driver.findElement(By.xpath("//*[@id=\"content-section\"]/div/div[2]/div/div[2]")).getText();
 	    String Expected = "Course Selenium_121 added";
 		Assert.assertTrue(Actual.contains(Expected));

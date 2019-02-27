@@ -42,6 +42,7 @@ public class AdminAddClassTest {
 		// open the browser 
 		driver.get(baseUrl);
 		
+		// Login page
 		adminAddClass.sendUserName("admin");
 		adminAddClass.sendPassword("admin@1234");
 		adminAddClass.clickLoginBtn();
@@ -57,28 +58,37 @@ public class AdminAddClassTest {
 		adminAddClass.clickAdminLink();
 		adminAddClass.clickClassesLink();
 		adminAddClass.clickAddClassesLink();
+		
+		// Creating a new class
 		adminAddClass.sendClassName("class4");
 		adminAddClass.sendClassDescription("demo");
 		adminAddClass.clickGroupPermissions();
 		adminAddClass.clickSubmit();
+		
+		// Subscribing user to class
 		adminAddClass.clickSubscribeUser();
 		adminAddClass.clickUsers("Anu Ch (anu)");
 		adminAddClass.clickArrowButton();
 		adminAddClass.clickSubscribeUserToClass();
 		
+		// Capturing the course count before subscribing
 		WebElement actmsg=driver.findElement(By.xpath("//table//tbody//tr//td[@title='class4']//following-sibling::td[2]"));
 		String  actmsgval = actmsg.getText();
 		int num1 = Integer.parseInt(actmsgval);
         System.out.println("value is " +actmsgval);
+        
+        // Subscribing class to course
 		adminAddClass.clickSubscribeCourse();
 		adminAddClass.clickCourses("Selenium_123 (AA)");
 		adminAddClass.clickArrowButton1();
 		adminAddClass.clickSubscribeClassToCourses();
 		
+		// Capturing the course count before subscribing
 		WebElement expmsg=driver.findElement(By.xpath("//table//tbody//tr//td[@title='class4']//following-sibling::td[2]"));
 		String expmsgval = expmsg.getText();
 		int num2 = Integer.parseInt(expmsgval);
         System.out.println("value is " +expmsgval);
+        // Assertion
         Assert.assertTrue (num1 < num2);
 		screenShot.captureScreenShot("TC049");
 	}

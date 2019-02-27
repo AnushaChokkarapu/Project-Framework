@@ -41,6 +41,7 @@ public class AdminAddUserTest {
 		// open the browser 
 		driver.get(baseUrl);
 		
+		// Login page
 		adminAddUser.sendUserName("admin");
 		adminAddUser.sendPassword("admin@1234");
 		adminAddUser.clickLoginBtn();
@@ -54,6 +55,7 @@ public class AdminAddUserTest {
 	@Test
 	public void validAddUserTest() {
 		adminAddUser.clickAdminLink();
+		// Adding a new user
 		adminAddUser.clickAddUserLink();
 		adminAddUser.sendFirstName("Honey5");
 		adminAddUser.sendLastName("G");
@@ -64,6 +66,8 @@ public class AdminAddUserTest {
 		adminAddUser.sendPassword1("123456");
 		adminAddUser.clickProfile();
 		adminAddUser.clickSubmit();	
+		
+		// Assertion
 		String Actual = driver.findElement(By.xpath("//*[@id=\"content-section\"]/div/div[2]/div/div[2]")).getText();
 	    String Expected = "The user has been added:";
 		Assert.assertTrue(Actual.contains(Expected));

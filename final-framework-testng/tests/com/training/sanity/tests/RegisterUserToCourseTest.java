@@ -40,7 +40,7 @@ public class RegisterUserToCourseTest {
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
 		driver.get(baseUrl);
-		
+		// Login page
 		registerUserToCourse.sendUserName("admin");
 		registerUserToCourse.sendPassword("admin@1234");
 		registerUserToCourse.clickLoginBtn();
@@ -54,6 +54,7 @@ public class RegisterUserToCourseTest {
 	@Test
 	public void validRegisterUserTest() {
 		registerUserToCourse.clickAdminLink();
+		// Adding a new user
 		registerUserToCourse.clickAddUserLink();
 		registerUserToCourse.sendFirstName("Honey8");
 		registerUserToCourse.sendLastName("G");
@@ -66,9 +67,12 @@ public class RegisterUserToCourseTest {
 		registerUserToCourse.clickSubmit();	
 		registerUserToCourse.clickAdminLink();
 		registerUserToCourse.clickAddUsersLink();
+		
+		// Subscribing user to course
 		registerUserToCourse.clickUsers("G Honey8 (honey8)");
 		registerUserToCourse.clickCourses("(AA) Selenium_123");
 		registerUserToCourse.clickAddToCourses();
+		// Assertion
 		String Actual = driver.findElement(By.xpath("//*[@id=\"content-section\"]/div/div[3]")).getText();
 	    String Expected = "The selected users are subscribed to the selected course";
 		Assert.assertTrue(Actual.contains(Expected));
