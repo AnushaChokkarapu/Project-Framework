@@ -57,6 +57,9 @@ public class StudentTaskComment {
 	//click on Save 
 	@FindBy(id="add_post_save")
 	private WebElement save;
+	
+	@FindBy(xpath="//*[@id=\"content-section\"]/div/div[2]/div/div[2]")
+	private WebElement assert1;
 
 	public void sendUserName(String userName) {
 		this.userName.clear();
@@ -110,5 +113,10 @@ public class StudentTaskComment {
 	
 	public void clickSave() {
 		this.save.click(); 
+	}
+	
+	public String Assertion()
+	{
+		return this.assert1.getText();
 	}
 }

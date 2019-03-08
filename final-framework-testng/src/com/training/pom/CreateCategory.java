@@ -77,6 +77,9 @@ public class CreateCategory {
 	@FindBy(xpath="//*[@id=\"update_course\"]/fieldset/div[7]/div[1]/div/div/ul/li[6]/a/span[1]")
 	private WebElement languageSelection;
 	
+	@FindBy(xpath="//*[@id=\"content-section\"]/div/div[2]/div/div[2]")
+	private WebElement assert1;
+	
 	// Click on Submit
 	@FindBy(name="submit")
 	private WebElement submit;
@@ -157,4 +160,8 @@ public class CreateCategory {
 	public void clickSubmitLink() {
 		this.submit.click(); 
     }
+	
+	public String Assertion() {
+		return this.assert1.getText();
+	}
 }

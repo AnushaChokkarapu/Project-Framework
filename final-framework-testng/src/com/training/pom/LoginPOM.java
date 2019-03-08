@@ -22,14 +22,16 @@ public class LoginPOM {
 	@FindBy(id="formLogin_submitAuth")
 	private WebElement loginBtn; 
 	
-	public void sendUserName(String userName) {
+	public String sendUserName(String userName) {
 		this.userName.clear();
 		this.userName.sendKeys(userName);
+		return this.userName.getAttribute("value");
 	}
 	
-	public void sendPassword(String password) {
+	public String sendPassword(String password) {
 		this.password.clear(); 
 		this.password.sendKeys(password); 
+		return this.password.getAttribute("value");
 	}
 	
 	public void clickLoginBtn() {

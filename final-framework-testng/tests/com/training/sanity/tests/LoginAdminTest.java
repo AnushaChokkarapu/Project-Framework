@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -44,11 +45,13 @@ public class LoginAdminTest {
 	
 	@AfterMethod
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.quit();
 	}
 	@Test
 	public void validLoginTest() {
+		
+		// To verify whether application allows admin to get login into application
 		// Login page
 		System.out.println("Login Page Title is:"+driver.getTitle());
 		loginAdmin.sendUserName("admin");

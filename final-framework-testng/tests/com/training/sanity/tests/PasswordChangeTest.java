@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -49,12 +50,14 @@ public class PasswordChangeTest {
 	
 	@AfterMethod
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.quit();
 	}
 				
 	@Test
 	public void validEditTest() {
+		
+		// To verify whether application allows admin to change the password in Edit Profile page
 		adminPasswordChange.clickHomePage();
 		
 		// Edit profile page
@@ -64,7 +67,7 @@ public class PasswordChangeTest {
 		adminPasswordChange.sendPassword2("admin@1234");
 		adminPasswordChange.saveChanges();
 		// Assertion
-		String Actual = driver.findElement(By.xpath("//*[@id=\"content-section\"]/div/div[2]/div/div[1]")).getText();
+		String Actual = adminPasswordChange.Assertion();;
 		String Expected = "Your new profile has been saved";
 		assertEquals(Actual, Expected);
 		screenShot.captureScreenShot("TC018");

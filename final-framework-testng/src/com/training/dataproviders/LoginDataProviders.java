@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import com.training.bean.LoginBean;
 import com.training.dao.ELearningDAO;
 import com.training.readexcel.ApachePOIExcelRead;
+import com.training.readexcel.ApachePOIExcelRead1;
 import com.training.readexcel.ReadExcel;
 
 public class LoginDataProviders {
@@ -19,9 +20,14 @@ public class LoginDataProviders {
 		Object[][] result = new Object[list.size()][]; 
 		int count = 0; 
 		for(LoginBean temp : list){
-			Object[]  obj = new Object[2]; 
-			obj[0] = temp.getUserName(); 
-			obj[1] = temp.getPassword(); 
+			Object[]  obj = new Object[7]; 
+			obj[0] = temp.getFirstName();
+			obj[1] = temp.getLastName();
+			obj[2] = temp.getEmail();
+			obj[3] = temp.getUserName(); 
+			obj[4] = temp.getPassword(); 
+			obj[5] = temp.getConfirmPassword();
+			obj[6] = temp.getPhone();
 			
 			result[count ++] = obj; 
 		}
@@ -32,8 +38,23 @@ public class LoginDataProviders {
 	
 	@DataProvider(name = "excel-inputs")
 	public Object[][] getExcelData(){
-		String fileName ="C:/Users/Naveen/Desktop/Testing.xlsx"; 
-		return new ApachePOIExcelRead().getExcelContent(fileName); 
+		String fileName ="C:\\Users\\AnushaChokkarapu\\Desktop\\Selenium Training\\Project\\TestData_ELearning.xlsx"; 
+		String SheetName = "Sheet1";
+		return new ApachePOIExcelRead().getExcelContent(fileName,SheetName); 
+	}
+	
+	@DataProvider(name = "excel-inputs1")
+	public Object[][] getExcelData1(){
+		String fileName ="C:\\Users\\AnushaChokkarapu\\Desktop\\Selenium Training\\Project\\TestData_ELearning.xlsx"; 
+		String SheetName = "Sheet2";
+		return new ApachePOIExcelRead().getExcelContent(fileName,SheetName); 
+	}
+	
+	@DataProvider(name = "excel-inputs2")
+	public Object[][] getExcelData2(){
+		String fileName ="C:\\Users\\AnushaChokkarapu\\Desktop\\Selenium Training\\Project\\TestData_ELearning.xlsx"; 
+		String SheetName = "Sheet3";
+		return new ApachePOIExcelRead().getExcelContent(fileName,SheetName); 
 	}
 	
 	@DataProvider(name = "xls-inputs")

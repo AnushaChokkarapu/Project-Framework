@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -44,12 +45,13 @@ public class StudentLogoutTest {
 	
 	@AfterMethod
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.quit();
 	}
 				
 	@Test
 	public void validLogoutTest() {
+		// To verify whether application allows teacher to get log out from the application
 		// Login page
 		System.out.println(driver.getTitle());
 		studentLogout.sendUserName("vamshi");

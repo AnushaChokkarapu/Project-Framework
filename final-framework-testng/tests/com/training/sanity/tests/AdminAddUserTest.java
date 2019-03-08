@@ -3,6 +3,7 @@ package com.training.sanity.tests;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -49,11 +50,13 @@ public class AdminAddUserTest {
 	
 	@AfterMethod
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.quit();
 	}
 	@Test
 	public void validAddUserTest() {
+		// To verify whether application allows admin to add new user as a trainer 
+		// by entering valid credentials in mandatory fields only
 		adminAddUser.clickAdminLink();
 		// Adding a new user
 		adminAddUser.clickAddUserLink();
@@ -68,7 +71,7 @@ public class AdminAddUserTest {
 		adminAddUser.clickSubmit();	
 		
 		// Assertion
-		String Actual = driver.findElement(By.xpath("//*[@id=\"content-section\"]/div/div[2]/div/div[2]")).getText();
+		String Actual = adminAddUser.Assertion();
 	    String Expected = "The user has been added:";
 		Assert.assertTrue(Actual.contains(Expected));
 		screenShot.captureScreenShot("TC020");

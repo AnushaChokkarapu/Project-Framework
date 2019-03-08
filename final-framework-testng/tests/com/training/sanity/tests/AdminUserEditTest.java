@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -50,18 +51,20 @@ public class AdminUserEditTest {
 	
 	@AfterMethod
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.quit();
 	}
 				
 	@Test
 	public void validEditTest() {
+		
+		// TO verify whether application allows admin to view details of user
 		adminUserEdit.clickAdminLink();
 		adminUserEdit.clickUserListLink();
 		adminUserEdit.clickEditUserLink();
 		
 		// Assertion
-		String Actual = driver.findElement(By.name("firstname")).getAttribute("value");
+		String Actual = adminUserEdit.Assertion();
 		String Expected = "Hari";
 		assertEquals(Actual, Expected);
 		screenShot.captureScreenShot("TC019");

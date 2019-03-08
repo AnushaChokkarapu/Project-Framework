@@ -62,6 +62,9 @@ public class AdminCreateSession {
 	// Click on Finish Session
 	@FindBy(xpath="//*[@id=\"multiple-add-session\"]/div[2]/div/button")
 	private WebElement finishSession;
+	
+	@FindBy(xpath="//*[@id=\"session-user-list\"]/tbody/tr[2]/td[1]/a")
+	private WebElement assert1;
 
 	public void sendUserName(String userName) {
 		this.userName.clear();
@@ -126,4 +129,8 @@ public class AdminCreateSession {
 	public void clickFinishSession() {
 		this.finishSession.click(); 
     }
+	
+	public String Assertion() {
+		return this.assert1.getText();
+	}
 }

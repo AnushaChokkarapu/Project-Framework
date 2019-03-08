@@ -74,6 +74,9 @@ private WebDriver driver;
 	@FindBy(xpath="//*[@id=\"content-section\"]/div/form[2]/table/tbody/tr[2]/td[2]/button")
 	private WebElement addCourses;
 	
+	@FindBy(xpath="//*[@id=\"content-section\"]/div/div[3]")
+	private WebElement assert1;
+	
 	public void sendUserName(String userName) {
 		this.userName.clear();
 		this.userName.sendKeys(userName);
@@ -160,4 +163,9 @@ private WebDriver driver;
 	public void clickAddToCourses() {
 		this.addCourses.click(); 
     }
+	
+	public String Assertion()
+	{
+		return this.assert1.getText();
+	}
 }

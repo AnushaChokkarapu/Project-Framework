@@ -36,6 +36,9 @@ private WebDriver driver;
 	@FindBy(xpath="/html[1]/body[1]/div[1]/section[1]/div[1]/div[2]/div[1]/section[1]/div[1]/form[1]/table[1]/tbody[1]/tr[2]/td[11]/a[5]/img[1]")
 	private WebElement editUserLink;
 	
+	@FindBy(name="firstname")
+	private WebElement assert1;
+	
 	public void sendUserName(String userName) {
 		this.userName.clear();
 		this.userName.sendKeys(userName);
@@ -60,5 +63,9 @@ private WebDriver driver;
 	
 	public void clickEditUserLink() {
 		this.editUserLink.click(); 
+	}
+	
+	public String Assertion() {
+		return this.assert1.getAttribute("value");
 	}
 }

@@ -3,6 +3,7 @@ package com.training.sanity.tests;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -50,11 +51,13 @@ public class AdminAddClassTest {
 	
 	@AfterMethod
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.quit();
 	}
 	@Test
 	public void validAddClassTest() {
+		// TO verify whether application allows admin to add classes, 
+		// subscribe user to class, subscribe class to course & subscribe class to sessions
 		adminAddClass.clickAdminLink();
 		adminAddClass.clickClassesLink();
 		adminAddClass.clickAddClassesLink();

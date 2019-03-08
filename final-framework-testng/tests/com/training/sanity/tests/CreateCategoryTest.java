@@ -3,6 +3,7 @@ package com.training.sanity.tests;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -48,11 +49,13 @@ public class CreateCategoryTest {
 	
 	@AfterMethod
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.quit();
 	}
 	@Test
 	public void validAddUserTest() {
+		
+		// TO verify whether application allows admin to create a category & course on the category
 		createCategory.clickAdminLink();
 		createCategory.clickCoursesCategoryLink();
 		
@@ -74,7 +77,7 @@ public class CreateCategoryTest {
 		createCategory.clickSubmitLink();
 		
 		//Assertion
-		String Actual = driver.findElement(By.xpath("//*[@id=\"content-section\"]/div/div[2]/div/div[2]")).getText();
+		String Actual = createCategory.Assertion();;
 	    String Expected = "Course Selenium_121 added";
 		Assert.assertTrue(Actual.contains(Expected));
 		screenShot.captureScreenShot("TC047");

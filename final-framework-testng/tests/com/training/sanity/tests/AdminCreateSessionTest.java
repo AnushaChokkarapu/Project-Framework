@@ -3,6 +3,7 @@ package com.training.sanity.tests;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -49,11 +50,14 @@ public class AdminCreateSessionTest {
 	
 	@AfterMethod
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.quit();
 	}
 	@Test
 	public void validCreateSessionTest() {
+		
+		// To verify whether application allows admin to create training session
+		
 		adminCreateSession.clickAdminLink();
 		
 		// Creating a new session
@@ -69,7 +73,7 @@ public class AdminCreateSessionTest {
 		adminCreateSession.clickFinishSession();
 		
 		// Assertion
-		String Actual = driver.findElement(By.xpath("//*[@id=\"session-user-list\"]/tbody/tr[2]/td[1]/a")).getText();
+		String Actual = adminCreateSession.Assertion();
 	    String Expected = "Vamshi Krishna (vamshi)";
 		Assert.assertTrue(Actual.contains(Expected));
 		screenShot.captureScreenShot("TC050");

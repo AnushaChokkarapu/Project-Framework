@@ -45,6 +45,9 @@ private WebDriver driver;
 	@FindBy(id="profile_apply_change")
 	private WebElement save;
 	
+	@FindBy(xpath="//*[@id=\"content-section\"]/div/div[2]/div/div[1]")
+	private WebElement assert1;
+	
 	public void sendUserName(String userName) {
 		this.userName.clear();
 		this.userName.sendKeys(userName);
@@ -86,5 +89,10 @@ private WebDriver driver;
 	
 	public void saveChanges() {
 		this.save.click();
+	}
+	
+	public String Assertion()
+	{
+		return this.assert1.getText();
 	}
 }

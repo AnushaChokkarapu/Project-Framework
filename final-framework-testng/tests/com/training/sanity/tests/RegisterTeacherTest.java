@@ -1,7 +1,5 @@
 package com.training.sanity.tests;
 
-import static org.testng.Assert.assertEquals;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -9,21 +7,23 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.training.dataproviders.LoginDataProviders;
 import com.training.generics.ScreenShot;
-import com.training.pom.StudentTaskComment;
+import com.training.pom.RegisterTeacher;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class StudentTaskCommentTest {
+public class RegisterTeacherTest {
 
 	private WebDriver driver;
 	private String baseUrl;
-	private StudentTaskComment studentTaskComment;
+	private RegisterTeacher registerTeacher;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -37,15 +37,12 @@ public class StudentTaskCommentTest {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		studentTaskComment = new StudentTaskComment(driver); 
+		registerTeacher = new RegisterTeacher(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
 		driver.get(baseUrl);
-		// Login page
-		studentTaskComment.sendUserName("vamshi");
-		studentTaskComment.sendPassword("123456");
-		studentTaskComment.clickLoginBtn();
+		
 	}
 	
 	@AfterMethod
@@ -53,25 +50,29 @@ public class StudentTaskCommentTest {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.quit();
 	}
-				
-	@Test
-	public void validStudentTaskTest() throws Exception {
+	@Test(dataProvider="excel-inputs", dataProviderClass = LoginDataProviders.class)
+	public void validRegistrationTest(String firstName, String lastName, String email, String userName, String password, String password1, String phone ) {
+		// TO verify whether application allows multiple user to get registered as Teacher
+		// Click on SignUp link
+		registerTeacher.signUp();
+		// Enter all relevant details
+		registerTeacher.sendFirstName(firstName);
+		registerTeacher.sendLastName(lastName);
+		registerTeacher.sendEmail(email);
+		registerTeacher.sendUserName(userName);
+		registerTeacher.sendPassword(password);
+		registerTeacher.sendPassword1(password1);
+		registerTeacher.sendPhone(phone);
+		registerTeacher.selectLanguage();
+		registerTeacher.clickTeacher();
+		// Click on Submit
+		registerTeacher.clickSubmit();	
 		
-		// To verify whether application allows student to comment on the task assigned in the project
-		System.out.println(driver.getTitle());
-		// Adding a comment for the assigned task 
-		studentTaskComment.clickCourseLink();
-		studentTaskComment.clickProjectLink();
-		studentTaskComment.clickMyTaskLink();
-		studentTaskComment.clickHomeIcon();
-		studentTaskComment.clickTaskNameLink();
-		studentTaskComment.sendTitle("Hello5");
-		studentTaskComment.clickSave();
 		// Assertion
-		String Actual = studentTaskComment.Assertion();;
-		String Expected = "You comment has been added";
-		assertEquals(Actual, Expected);
-		screenShot.captureScreenShot("TC046");
+		String Actual = registerTeacher.Assertion();;
+	    String Expected = "Your personal settings have been registered.";
+		Assert.assertTrue(Actual.contains(Expected));
+		screenShot.captureScreenShot("TC076");
 	}
 
 }

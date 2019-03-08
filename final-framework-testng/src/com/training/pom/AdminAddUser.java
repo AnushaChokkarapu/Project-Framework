@@ -60,6 +60,9 @@ public class AdminAddUser {
 		@FindBy(xpath="//*[@id=\"user_add\"]/fieldset/div[11]/div[1]/div/div/ul/li[1]/a/span[1]")
 		private WebElement trainer;
 		
+		@FindBy(xpath="//*[@id=\\\"content-section\\\"]/div/div[2]/div/div[2]")
+		private WebElement assert1;
+		
 		// Click on Submit 
 		@FindBy(name="submit")
 		private WebElement submit;
@@ -128,4 +131,8 @@ public class AdminAddUser {
 		public void clickSubmit() {
 			this.submit.click(); 
 	    }
+		
+		public String Assertion() {
+			return this.assert1.getText();
+		}
 }
